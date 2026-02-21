@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Classes</h2>
+<form method="post" class="form-grid">
+  <input name="name" placeholder="Class Name" required />
+  <input name="room_number" placeholder="Room Number" />
+  <button type="submit">Add Class</button>
+</form>
+<table>
+  <tr><th>ID</th><th>Class</th><th>Room</th></tr>
+  {% for cls in classes %}
+  <tr><td>{{ cls.id }}</td><td>{{ cls.name }}</td><td>{{ cls.room_number }}</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

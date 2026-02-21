@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Teachers</h2>
+<form method="post" class="form-grid">
+  <input name="name" placeholder="Teacher Name" required />
+  <input name="subject" placeholder="Subject" />
+  <input name="phone" placeholder="Phone Number" />
+  <button type="submit">Add Teacher</button>
+</form>
+<table>
+  <tr><th>ID</th><th>Name</th><th>Subject</th><th>Phone</th></tr>
+  {% for teacher in teachers %}
+  <tr>
+    <td>{{ teacher.id }}</td>
+    <td>{{ teacher.name }}</td>
+    <td>{{ teacher.subject }}</td>
+    <td>{{ teacher.phone }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}
