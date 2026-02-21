@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="cards">
+  <article><h3>Total Students</h3><p>{{ metrics.students }}</p></article>
+  <article><h3>Total Teachers</h3><p>{{ metrics.teachers }}</p></article>
+  <article><h3>Total Classes</h3><p>{{ metrics.classes }}</p></article>
+  <article><h3>Present Today</h3><p>{{ metrics.present_today }}</p></article>
+  <article><h3>Fees Collected</h3><p>₹ {{ '%.2f'|format(metrics.fees_collected) }}</p></article>
+</section>
+
+<section class="table-grid">
+  <div>
+    <h2>Recent Attendance</h2>
+    <table>
+      <tr><th>Date</th><th>Student</th><th>Class</th><th>Status</th></tr>
+      {% for row in recent_attendance %}
+      <tr><td>{{ row.date }}</td><td>{{ row.student_name }}</td><td>{{ row.class_name }}</td><td>{{ row.status }}</td></tr>
+      {% endfor %}
+    </table>
+  </div>
+  <div>
+    <h2>Recent Fee Payments</h2>
+    <table>
+      <tr><th>Date</th><th>Student</th><th>Amount</th></tr>
+      {% for row in recent_fees %}
+      <tr><td>{{ row.payment_date }}</td><td>{{ row.student_name }}</td><td>₹ {{ row.amount_paid }}</td></tr>
+      {% endfor %}
+    </table>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Attendance</h2>
+<form method="post" class="form-grid">
+  <select name="student_id" required>
+    <option value="">Select Student</option>
+    {% for student in students %}
+      <option value="{{ student.id }}">{{ student.name }}</option>
+    {% endfor %}
+  </select>
+  <select name="class_id" required>
+    <option value="">Select Class</option>
+    {% for cls in classes %}
+      <option value="{{ cls.id }}">{{ cls.name }}</option>
+    {% endfor %}
+  </select>
+  <input type="date" name="date" required />
+  <select name="status" required>
+    <option>Present</option>
+    <option>Absent</option>
+  </select>
+  <button type="submit">Mark Attendance</button>
+</form>
+<table>
+  <tr><th>Date</th><th>Student</th><th>Class</th><th>Status</th></tr>
+  {% for row in attendance_records %}
+  <tr><td>{{ row.date }}</td><td>{{ row.student_name }}</td><td>{{ row.class_name }}</td><td>{{ row.status }}</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}
